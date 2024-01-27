@@ -1,0 +1,13 @@
+version: "3"
+services:
+  queue:
+    image: redis
+    restart: always
+    command: redis-server --requirepass password
+    ports:
+      - "6379:6379"
+    volumes:
+      - queue:/data
+volumes:
+  queue:
+    driver: local
