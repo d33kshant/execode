@@ -3,7 +3,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BullModule } from '@nestjs/bull';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ExecModule } from './exec/exec.module';
 import { QueueModule } from './queue/queue.module';
 
 @Module({
@@ -22,7 +21,6 @@ import { QueueModule } from './queue/queue.module';
     BullModule.registerQueue({
       name: 'codes',
     }),
-    ExecModule,
     QueueModule,
   ],
   controllers: [AppController],
