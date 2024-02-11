@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BullModule } from '@nestjs/bull';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { QUEUE } from './constants';
+import { QueueProcessor } from './queue.processor';
 
 @Module({
   imports: [
@@ -18,10 +20,10 @@ import { AppService } from './app.service';
       inject: [ConfigService],
     }),
     BullModule.registerQueue({
-      name: 'codes',
+      name: QUEUE,
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, QueueProcessor],
 })
 export class AppModule {}
